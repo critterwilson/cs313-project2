@@ -6,7 +6,7 @@ const { Pool } = require("pg"); // This is the postgres database connection modu
 
 // This says to use the connection string from the environment variable, if it is there,
 // otherwise, it will use a connection string that refers to a local postgres DB
-const connectionString = process.env.DATABASE_URL || "postgres://ujasjmoblbejbh:fe3cc88b10b3d515d3ab7dc5504554c96a59fe965f0d57272ff625d5f03f55f8@ec2-23-21-160-38.compute-1.amazonaws.com:5432/d38l5n7ovd4lrb?ssl=true";
+const connectionString = process.env.DATABASE_URL || "postgres://critter:critter@localhost:5432/project2";
 
 // Establish a new connection to the data source specified the connection string.
 const pool = new Pool({connectionString: connectionString});
@@ -25,10 +25,10 @@ app.listen(app.get('port'), function() {
 });
 
 
-// This function handles requests to the /getPerson endpoint
-// it expects to have an id on the query string, such as: http://localhost:5000/getPerson?id=1
+// This function handles requests to the /getMode endpoint
+// it expects to have an id on the query string, such as: http://localhost:5000/getMode?id=1
 function getMode(request, response) {
-	// First get the person's id
+	// First get the mode's id
 	const id = request.query.id;
 
 	// TODO: We should really check here for a valid id before continuing on...
@@ -38,25 +38,25 @@ function getMode(request, response) {
 		// This is the callback function that will be called when the DB is done.
 		// The job here is just to send it back.
 
-		// Make sure we got a row with the person, then prepare JSON to send back
+		// Make sure we got a row with the mode, then prepare JSON to send back
 		if (error || result == null || result.length != 1) {
 			response.status(500).json({success: false, data: error});
 		} else {
 			const mode = result[0];
-			response.status(200).json(person);
+			response.status(200).json(mode);
 		}
 	});
 }
 
-// This function gets a person from the DB.
+// This function gets a mode from the DB.
 // By separating this out from the handler above, we can keep our model
-// logic (this function) separate from our controller logic (the getPerson function)
+// logic (this function) separate from our controller logic (the getMode function)
 function getModeFromDb(id, callback) {
 	console.log("Getting mode from DB with id: " + id);
 
 	// Set up the SQL that we will use for our query. Note that we can make
 	// use of parameter placeholders just like with PHP's PDO.
-	const sql = "SELECT id, first, last, birthdate FROM person WHERE id = $1::int";
+	const sql = "SELECT name FROM mode WHERE id = $1::int";
 
 	// We now set up an array of all the parameters we will pass to fill the
 	// placeholder spots we left in the query.
@@ -84,4 +84,4 @@ function getModeFromDb(id, callback) {
 		callback(null, result.rows);
 	});
 
-} // end of getPersonFromDb
+} // end of getModeFromDb

@@ -4,7 +4,7 @@ CREATE DATABASE project2;
 CREATE TABLE mode
 (
 	id SERIAL PRIMARY KEY NOT NULL,
-	first name(100) NOT NULL
+	name VARCHAR(100) NOT NULL
 );
 
 INSERT INTO mode(name) VALUES
@@ -18,8 +18,8 @@ INSERT INTO mode(name) VALUES
   ('Major Pentatonic'),
   ('Minor Pentatonic'),
   ('Major Blues Scale'),
-  ('Minor Blues Scale')
+  ('Minor Blues Scale');
 
-CREATE USER ta_user WITH PASSWORD 'ta_pass';
-GRANT SELECT, INSERT, UPDATE ON person TO ta_user;
-GRANT USAGE, SELECT ON SEQUENCE person_id_seq TO ta_user;
+CREATE USER critter WITH PASSWORD 'critter';
+GRANT SELECT, INSERT, UPDATE ON mode TO critter;
+GRANT USAGE, SELECT ON SEQUENCE mode_id_seq TO critter;
