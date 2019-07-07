@@ -1,19 +1,18 @@
 const express = require('express');
+const path = require('path');
+const modeController = require("./controllers/modeController.js");
+
 const app = express();
-
-// Following the "Single query" approach from: https://node-postgres.com/features/pooling#single-query
-const { Pool } = require("pg"); // This is the postgres database connection module.
-
-// This says to use the connection string from the environment variable, if it is there,
-// otherwise, it will use a connection string that refers to a local postgres DB
-const connectionString = process.env.DATABASE_URL || "postgres://critter:critter@localhost:5432/project2";
-
-// Establish a new connection to the data source specified the connection string.
-const pool = new Pool({connectionString: connectionString});
-
+require('dotenv').config();
 
 app.set('port', (process.env.PORT || 5000));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname + '/public')));
+
+// Establish a new connection to the data source specified the connection string.
+
+
+app.get('/tones', modeController.getTones);
+
 
 // This says that we want the function "getMode below to handle
 // any requests that come to the /getMode endpoint
@@ -21,7 +20,7 @@ app.get('/getMode', getMode);
 
 // Start the server
 app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+  console.log('Server is running on port', app.get('port'));
 });
 
 
