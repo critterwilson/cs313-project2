@@ -3,18 +3,29 @@ const connectionString = process.env.DATABASE_URL;
 //console.log(connectionString);
 const pool = new Pool({connectionString: connectionString});
 
-function getAllModes(callback) {
-	// Get all modes from the DB
-	var results = {
-		tones: [
-		{id:1, tone:"neutral"},
-		{id:2, tone:"good time"}
-		]
-	}
+function getAllTones(callback) {
+	
+	var sql = "SELECT * FROM descriptions;";
 
-	callback(results);
+	pool.query(sql, function(err, resDb) {
+		if (err) {
+			throw err;
+		} else {
+			console.log("Back from the DB with: ");
+			console.log(resDb);
+		
+			var results = {
+				success:true,
+				list:resDb.rows
+			}
+
+			callback(null, results);
+		}
+	});
+
+
 }
 
 module.exports = {
-	getAllModes: getAllModes
+	getAllTones: getAllTones
 };

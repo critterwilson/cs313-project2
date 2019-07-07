@@ -2,10 +2,20 @@
 <html>
 <head>
 	<title>The Mode Master</title>
+	<script src="home.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
-<body onload="showTone()">
-	<h1>Please select a Mood/Tone</h1>
-
+<body>
+	<h1>Please Select a Mode to Learn More About It</h1>
+	<select id="modeSelect" onchange="getModeInfo()">
+		<option value="1">Ionian</option>
+		<option value="2">Lydian</option>
+		<option value="3">Mixolydian</option>
+		<option value="4">Dorian</option>
+		<option value="5">Aeolian</option>
+		<option value="6">Phyrgian</option>
+		<option value="7">Locrian</option>
+	</select>
 	<div id="selectTone">
 	</div>
 </body>

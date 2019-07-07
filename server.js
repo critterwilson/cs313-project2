@@ -1,86 +1,21 @@
 const express = require('express');
 const path = require('path');
+require('dotenv').config();
+
 const modeController = require("./controllers/modeController.js");
 
 const app = express();
-require('dotenv').config();
 
 app.set('port', (process.env.PORT || 5000));
+
 app.use(express.static(path.join(__dirname + '/public')));
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
-// Establish a new connection to the data source specified the connection string.
-
+app.get('/modeInfo', modeController.getModeInfo);
 
 app.get('/tones', modeController.getTones);
 
-
-// This says that we want the function "getMode below to handle
-// any requests that come to the /getMode endpoint
-app.get('/getMode', getMode);
-
-// Start the server
 app.listen(app.get('port'), function() {
   console.log('Server is running on port', app.get('port'));
 });
-
-
-// This function handles requests to the /getMode endpoint
-// it expects to have an id on the query string, such as: http://localhost:5000/getMode?id=1
-function getMode(request, response) {
-	// First get the mode's id
-	const id = request.query.id;
-
-	// TODO: We should really check here for a valid id before continuing on...
-
-	// use a helper function to query the DB, and provide a callback for when it's done
-	getModeFromDb(id, function(error, result) {
-		// This is the callback function that will be called when the DB is done.
-		// The job here is just to send it back.
-
-		// Make sure we got a row with the mode, then prepare JSON to send back
-		if (error || result == null || result.length != 1) {
-			response.status(500).json({success: false, data: error});
-		} else {
-			const mode = result[0];
-			response.status(200).json(mode);
-		}
-	});
-}
-
-// This function gets a mode from the DB.
-// By separating this out from the handler above, we can keep our model
-// logic (this function) separate from our controller logic (the getMode function)
-function getModeFromDb(id, callback) {
-	console.log("Getting mode from DB with id: " + id);
-
-	// Set up the SQL that we will use for our query. Note that we can make
-	// use of parameter placeholders just like with PHP's PDO.
-	const sql = "SELECT * FROM alterations WHERE id = $1::int";
-
-	// We now set up an array of all the parameters we will pass to fill the
-	// placeholder spots we left in the query.
-	const params = [id];
-
-	// This runs the query, and then calls the provided anonymous callback function
-	// with the results.
-	pool.query(sql, params, function(err, result) {
-		// If an error occurred...
-		if (err) {
-			console.log("Error in query: ")
-			console.log(err);
-			callback(err, null);
-		}
-
-		// Log this to the console for debugging purposes.
-		console.log("Found result: " + JSON.stringify(result.rows));
-
-
-		// When someone else called this function, they supplied the function
-		// they wanted called when we were all done. Call that function now
-		// and pass it the results.
-
-		// (The first parameter is the error variable, so we will pass null.)
-		callback(null, result.rows);
-	});
-
-} // end of getModeFromDb
