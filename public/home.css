@@ -1,0 +1,68 @@
+.lyricIdeas {
+  width: 400px;
+  position: fixed;
+  z-index: 1;
+  top: 20px;
+  right: 0;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}
+
+.main {
+	margin-right: 400px;
+}
+
+
+#lyrics, #rhyme {
+	padding-left: 10px;
+}
+
+#lyricTitle {
+	margin-bottom: 5px;
+}
+
+select {
+  border-radius: 25px;
+  background: white;
+  border: 2px solid #2F76B6;
+  color: #2F76B6;
+}
+
+/* Table formatting */
+#table {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-right: 400px;
+  display: none;
+  max-width: 66%;
+}
+
+#table td, #table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  max-width: 40%;
+}
+
+#table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#table tr:hover {
+  background-color: #ddd;
+}
+
+#table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.main {
+  margin-right: 400px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}

@@ -1,22 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>The Mode Master</title>
+	<title>The SongWriter5000</title>
 	<script src="home.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="home.css">
 </head>
 <body>
-	<h1>Please Select a Mode to Learn More About It</h1>
-	<select id="modeSelect" onchange="getModeInfo()">
-		<option value="1">Ionian</option>
-		<option value="2">Lydian</option>
-		<option value="3">Mixolydian</option>
-		<option value="4">Dorian</option>
-		<option value="5">Aeolian</option>
-		<option value="6">Phyrgian</option>
-		<option value="7">Locrian</option>
-	</select>
-	<div id="selectTone">
+	<div class="lyricIdeas">
+		<!-- <h5>Song Data</h5> -->
+		<input type="text" name="lyricTitle" id="lyricTitle" size="30"
+			placeholder="Enter lyric title here">
+		<button onclick="saveLyrics()">Save Lyrics</button>
+		<textarea name="lyricNotes" id="lyricNotes" rows="30" cols="60"
+			placeholder="Enter lyric ideas here"></textarea>
+
+		<!-- <h5>Rhyme Help</h5> -->
+		<input type="text" name="word" id="rhymeInput" size="30"
+			placeholder="Enter a word to find its rhymes">
+		<button onclick="getRhyme()">Find Rhyme</button>
+		<textarea name="rhymeReturn" id="rhymeReturn" rows="1" cols="60"
+			placeholder="Rhyme placeholder" readonly></textarea>
+
+		<!-- <h5>Load Lyrics</h5> -->
+		<button onclick="getWrittenLyrics()" id="btnLoad">Load Songs</button>
+		<div id="writtenOptions"></div>
+
+	</div>
+
+	<div class="main">
+		<h2>The SongWriter 5000</h2>
+		<button onclick="selectNote()" id="btnGetStarted">Get Started!</button>
+		<div id="selectNote"></div>
+		<div id="selectTone"></div>
+		<div id="displayTable">
+			<table id="table">
+			  <tr>
+			  	<th></th>
+			    <th>1st</th>
+			    <th>2nd</th> 
+			    <th>3rd</th>
+			    <th>4th</th>
+			    <th>5th</th> 
+			    <th>6th</th>
+			    <th>7th</th>
+			  </tr>
+			  <tr>
+			  	<td><b>Notes</b></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  </tr>
+			  <tr>
+			  	<td><b>Alterations</b></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  </tr>
+			  <tr>
+			  	<td><b>Tone</b></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  	<td></td>
+			  </tr>
+			</table>
+		</div>
+
 	</div>
 </body>
 </html>

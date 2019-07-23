@@ -33,6 +33,39 @@ CREATE TABLE alterations
   mood_7 SMALLINT NOT NULL
 );
 
+CREATE TABLE key
+(
+  id SERIAL PRIMARY KEY NOT NULL,
+  first VARCHAR(2) NOT NULL,
+  second VARCHAR(2) NOT NULL,
+  third VARCHAR(2) NOT NULL,
+  fourth VARCHAR(2) NOT NULL,
+  fifth VARCHAR(2) NOT NULL,
+  sixth VARCHAR(2) NOT NULL,
+  seventh VARCHAR(2) NOT NULL
+);
+
+INSERT INTO key (first, second, third, fourth, fifth, sixth, seventh) VALUES
+  ('C', 'D', 'E', 'F', 'G', 'A', 'B'),
+  ('G', 'A', 'B', 'C', 'D', 'E', 'F#'),
+  ('D', 'E', 'F#', 'G', 'A', 'B', 'C#'),
+  ('A', 'B', 'C#', 'D', 'E', 'F#', 'G#'),
+  ('E', 'F#', 'G#', 'A', 'B', 'C#', 'D#'),
+  ('B', 'C#', 'D#', 'E', 'F#', 'G#', 'A#'),
+  ('F#', 'G#', 'A#', 'B', 'C#', 'D#', 'E#'),
+  ('C#', 'D#', 'E#', 'F#', 'G#', 'A#', 'B#'),
+  ('F', 'G', 'A', 'Bb', 'C', 'D', 'E'),
+  ('Bb', 'C', 'D', 'Eb', 'F', 'G', 'A'),
+  ('Eb', 'F', 'G', 'Ab', 'Bb', 'C', 'D'),
+  ('Ab', 'Bb', 'C', 'Db', 'Eb', 'F', 'G'),
+  ('Db', 'Eb', 'F', 'Gb', 'Ab', 'Bb', 'C'),
+  ('Gb', 'Ab', 'Bb', 'Cb', 'Db', 'Eb', 'F'),
+  ('Cb', 'Db', 'Eb', 'Fb', 'Gb', 'Ab', 'Bb');
+
+
+
+
+
 INSERT INTO mode(name) VALUES
   ('Ionian'), 
   ('Lydian'),
