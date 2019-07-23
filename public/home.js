@@ -1,5 +1,6 @@
 // Global variable that stores our table info as it is updated from the DB
 var keyInfo = {
+	title:"",
 	first:"0", alter_1:"Natural", mood_1:"0",
 	second:"", alter_2:"", mood_2:"",
 	third:"", alter_3:"", mood_3:"",
@@ -182,7 +183,8 @@ function displayModeInfo() {
 	table.rows[3].cells[5].innerHTML = keyInfo.mood_5;
 	table.rows[3].cells[6].innerHTML = keyInfo.mood_6;
 	table.rows[3].cells[7].innerHTML = keyInfo.mood_7;
-
+	// show to Mode title
+	$("#modeTitle").html('The ' + keyInfo.title + ' Mode');
 	$("#table").show();
 };
 
@@ -198,8 +200,9 @@ function recordModeInfo() {
 	// console.log("Displaying the mode info for the specified tone...");
 	// convert all the data to readable info and store it in our global variable
 	$.get('/modeInfo', params, function(data) {
-		console.log("Back from server with:");
+		console.log("/modeInfo is back from server with:");
 		console.log(data);
+		keyInfo.title = data.keyAlterations[0].name;
 		keyInfo.alter_2 = alterConvert(data.keyAlterations[0].alter_2);
 		keyInfo.alter_3 = alterConvert(data.keyAlterations[0].alter_3);
 		keyInfo.alter_4 = alterConvert(data.keyAlterations[0].alter_4);
