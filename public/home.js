@@ -96,6 +96,7 @@ function saveLyrics() {
 	// log the success of the post
 	$.post("/lyric", params, function(data) {
 		console.log(data);
+		alert("Save successful! Refresh the page to load your saved lyrics.")
 	});
 }
 
