@@ -1,18 +1,25 @@
+body {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
 .lyricIdeas {
   width: 400px;
   position: fixed;
   z-index: 1;
   top: 20px;
   right: 0;
-  background: #eee;
+  background: #C6C7C4;
   overflow-x: hidden;
   padding: 8px 0;
+  padding-left: 5px;
+  height: auto;
 }
 
 .main {
-	margin-right: 400px;
+  margin-right: 400px; /* Same width as the sidebar + left position in px */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
 }
-
 
 #lyrics, #rhyme {
 	padding-left: 10px;
@@ -25,13 +32,50 @@
 select {
   border-radius: 25px;
   background: white;
-  border: 2px solid #2F76B6;
-  color: #2F76B6;
+  border: 2px solid #334E58;
+  color: #334E58;
+}
+
+.selectMain {
+  border-radius: 25px;
+  background: white;
+  border: 2px solid #334E58;
+  color: #334E58;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+/*all buttons*/
+.button {
+  background-color: white;
+  color: #334E58;
+  border: 2px solid #334E58;
+  border-radius: 5px;
+  margin-bottom: 2px;
+}
+
+.button:hover {
+  background-color: #334E58;
+  color: white;
+}
+
+.buttonMain {
+  background-color: white;
+  color: #334E58;
+  border: 2px solid #334E58;
+  border-radius: 5px;
+  font-size: 24px
+}
+
+.buttonMain:hover {
+  background-color: #334E58;
+  color: white;
 }
 
 /* Table formatting */
 #table {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 16px;
   border-collapse: collapse;
   margin-top: 20px;
   margin-right: 400px;
@@ -40,29 +84,20 @@ select {
 }
 
 #table td, #table th {
-  border: 1px solid #ddd;
+  border: 1px solid #EEF0F2;
   padding: 8px;
   max-width: 40%;
 }
 
 #table tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-#table tr:hover {
-  background-color: #ddd;
+  background-color: #C6C7C4;
 }
 
 #table th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+  background-color: #334E58;
   color: white;
 }
 
-.main {
-  margin-right: 400px; /* Same width as the sidebar + left position in px */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}

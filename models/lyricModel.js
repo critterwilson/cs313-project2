@@ -33,7 +33,7 @@ function getLyricById(id, callback) {
 	pool.query(sql, params, function(error, db_results) {
 
 		if (error) {
-			throw err;
+			throw error;
 		} else {
 			console.log("Back from DB with:");
 			console.log(db_results);

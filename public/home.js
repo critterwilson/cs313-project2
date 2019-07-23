@@ -1,34 +1,19 @@
 var keyInfo = {
-	first:"0",
-	alter_1:"Natural",
-	mood_1:"0",
-	second:"",
-	alter_2:"",
-	mood_2:"",
-	third:"",
-	alter_3:"",
-	mood_3:"",
-	fourth:"",
-	alter_4:"",
-	mood_4:"",
-	fifth:"",
-	alter_5:"",
-	mood_5:"",
-	sixth:"",
-	alter_6:"",
-	mood_6:"",
-	seventh:"",
-	alter_7:"",
-	mood_7:""
+	first:"0", alter_1:"Natural", mood_1:"0",
+	second:"", alter_2:"", mood_2:"",
+	third:"", alter_3:"", mood_3:"",
+	fourth:"", alter_4:"", mood_4:"",
+	fifth:"", alter_5:"", mood_5:"",
+	sixth:"", alter_6:"", mood_6:"",
+	seventh:"", alter_7:"", mood_7:""
 };
-
 
 function selectNote() {
 	$.get('/keys', function(data) {
 		console.log("Back from server with:");
 		console.log(data);
-		var str = "<select id=\"keySelect\" onchange=\"loadMoods()\">";
-		str += "<option value=\"\">Selct a Key to Write in</option>";
+		var str = "<select id=\"keySelect\" onchange=\"loadMoods()\" class=\"selectMain\">";
+		str += "<option disabled selected hidden value=\"\">Selct a Key to Write in</option>";
 		for (var i = 0; i < data.keys.length; i++) {
 			var key = data.keys[i];
 			console.log(data.keys[i]);
@@ -48,8 +33,8 @@ function loadMoods(key) {
 	$.get('/moods', function(data) {
 		console.log("Back from server with:");
 		console.log(data);
-		var str = "<select id=\"moodSelect\" onchange=\"recordModeInfo();\">";
-		str += "<option value=\"\">Selct a Mood to Write in</option>";
+		var str = "<select id=\"moodSelect\" onchange=\"recordModeInfo();\" class=\"selectMain\">";
+		str += "<option disabled selected hidden value=\"\">Selct a Mood to Write in</option>";
 		for (var i = 0; i < data.tones.length; i++) {
 			var mood = data.tones[i];
 			console.log(data.tones[i]);
@@ -166,7 +151,6 @@ function displayModeInfo() {
 	$("#table").show();
 };
 
-
 function getWrittenLyrics() {
 	console.log("Retrieving written songs...");
 
@@ -175,7 +159,7 @@ function getWrittenLyrics() {
 		console.log(data);
 
 		var str = "<select id=\"writtenSongs\" onchange=\"fillInLyrics()\">";
-		str += "<option value=\"\">Selct a Song to work on</option>";
+		str += "<option disabled selected hidden value=\"\">Selct a Song to work on</option>";
 		for (var i = 0; i < data.lyrics.length; i++) {
 			var song = data.lyrics[i];
 			str += "<option value=\"" + song.id + "\">" + song.title + "</option>";
