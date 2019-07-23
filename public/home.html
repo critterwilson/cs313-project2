@@ -7,12 +7,14 @@
 	<link rel="stylesheet" href="home.css">
 </head>
 <body>
+	<!-- Main document with Mode info -->
 	<div class="main">
 		<h2>The SongWriter 5000</h2>
 		<button onclick="selectNote()" id="btnGetStarted" class="buttonMain">
 			Get Started!</button>
 		<div id="selectNote"></div>
 		<div id="selectTone"></div>
+		<!-- Table place holder -->
 		<div id="displayTable">
 			<table id="table">
 			  <tr>
@@ -59,21 +61,19 @@
 		</div>
 	</div>
 	<div class="lyricIdeas">
-		<!-- <h5>Song Data</h5> -->
+		<!-- Lyric title and notes with submit button -->
 		<input type="text" name="lyricTitle" id="lyricTitle" size="30"
 			placeholder="Enter lyric title here">
 		<button onclick="saveLyrics()" class="button">Save Lyrics</button>
 		<textarea name="lyricNotes" id="lyricNotes" rows="30" cols="60"
 			placeholder="Enter lyric ideas here"></textarea>
-
-		<!-- <h5>Rhyme Help</h5> -->
+		<!-- Rhyming help -->
 		<input type="text" name="word" id="rhymeInput" size="30"
 			placeholder="Enter a word to find its rhymes">
 		<button onclick="getRhyme()" class="button">Find Rhyme</button>
 		<textarea name="rhymeReturn" id="rhymeReturn" rows="1" cols="60"
 			placeholder="Rhyme placeholder" readonly></textarea>
-
-		<!-- <h5>Load Lyrics</h5> -->
+		<!-- Load previous lyrics -->
 		<button onclick="getWrittenLyrics()" id="btnLoad" class="button">
 			Load Songs</button>
 		<div id="writtenOptions"></div>

@@ -1,7 +1,12 @@
+/* I went with a very simple look. I spent so much time 
+on the logic that I was burnt out on CSS*/
+
+/* Font for the entire document*/
 body {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 
+/* The side bar lyric system*/
 .lyricIdeas {
   width: 400px;
   position: fixed;
@@ -15,20 +20,22 @@ body {
   height: auto;
 }
 
+#lyrics, #rhyme {
+  padding-left: 10px;
+}
+
+#lyricTitle {
+  margin-bottom: 5px;
+}
+
+/* Don't go behind lyric side bar, if you can help it*/
 .main {
   margin-right: 400px; /* Same width as the sidebar + left position in px */
   font-size: 28px; /* Increased text to enable scrolling */
   padding: 0px 10px;
 }
 
-#lyrics, #rhyme {
-	padding-left: 10px;
-}
-
-#lyricTitle {
-	margin-bottom: 5px;
-}
-
+/* All the <select>s */
 select {
   border-radius: 25px;
   background: white;
@@ -45,7 +52,7 @@ select {
   margin-bottom: 5px;
 }
 
-/*all buttons*/
+/* All buttons */
 .button {
   background-color: white;
   color: #334E58;
